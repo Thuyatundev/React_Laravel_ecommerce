@@ -1,0 +1,39 @@
+#start project date = 20.12.2023
+
+DataBase Design structure
+=====================
+#user
+
+
+#admin
+
+
+#category
+id slug name
+
+#color
+id slug name
+
+#brands
+id slug name
+
+#supplier
+id slug name image description
+
+#products
+id category_id supplier_id brand_id name image discount_price sale_price total_qty like_count view_count
+
+#product_reviews
+user_id product_id rating review
+
+#product_add_transaction
+supplier_id product_id total_qty
+
+#product_orders
+user_id product_id total_qty status(pending,cancel,success)
+
+#product_carts
+product_id user_id total_qty
+
+#product_color
+product_id color_id

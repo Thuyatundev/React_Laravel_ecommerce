@@ -3,15 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\ProductCart;
-use App\Models\ProductOrder;
-use App\Models\ProductReview;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -45,19 +42,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
-    public function cart()
-    {
-        return $this->hasMany(ProductCart::class);
-    }
-
-    public function order()
-    {
-        return $this->hasMany(ProductOrder::class);
-    }
-
-    public function review()
-    {
-        return $this->hasMany(ProductReview::class);
-    }
 }
