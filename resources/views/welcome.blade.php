@@ -7,6 +7,9 @@
     <title>Test</title>
 </head>
 <body>
+    <div>
+        <a href="{{ route('admin.adminlogin') }}">login</a>
+    </div>
     <div id="root"></div>
     <script src="{{ mix("js/test.js") }}"></script>
 </body>

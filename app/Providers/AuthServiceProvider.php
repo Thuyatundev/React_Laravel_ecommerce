@@ -16,6 +16,20 @@ class AuthServiceProvider extends ServiceProvider
         //
     ];
 
+    protected $guards = [
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+    ];
+
+    protected $providers = [
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Admin::class, // Make sure this points to your Admin model
+        ],
+    ];
+
     /**
      * Register any authentication / authorization services.
      */
