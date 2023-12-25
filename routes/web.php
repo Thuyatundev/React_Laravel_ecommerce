@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\Admin\PageController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\Admin\CategoryController;
 
 
 // learning page
@@ -17,4 +19,11 @@ Route::post('/admin/login', [PageController::class, 'adminlogin'])->name('admin.
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', [PageController::class, 'dashboard'])->name('admin.dashboard');
     Route::post('/logout', [PageController::class, 'logout'])->name('admin.logout');
+
+    //admin category
+    Route::resource('/category',CategoryController::class);
+
+    // admin Color
+    Route::resource('/color',ColorController::class);
+
 });

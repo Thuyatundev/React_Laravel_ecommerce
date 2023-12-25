@@ -18,6 +18,7 @@
     <!-- Argon CSS -->
     <link rel="stylesheet" href="/assets/css/argon.css?v=1.2.0" type="text/css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -36,7 +37,8 @@
                                 aria-haspopup="true" aria-expanded="false">
                                 <div class="media align-items-center">
                                     <span class="avatar avatar-sm rounded-circle">
-                                        <img alt="Image placeholder" src="/assets/img/theme/team-4.jpg">
+                                        {{-- <img alt="Image placeholder" src="/assets/img/theme/team-4.jpg"> --}}
+                                        <i class="fa-solid fa-user"></i>
                                     </span>
                                     <div class="media-body  ml-2  d-none d-lg-block">
                                         <span class="mb-0 text-sm  font-weight-bold">{{ auth()->guard('admin')->user()->name }}</span>
@@ -47,7 +49,9 @@
                                 <a href="#!" class="dropdown-item text-center">
                                    <form action="{{ route('admin.logout') }}" method="POST">
                                     @csrf
-                                    <input type="submit" value="logout" class="btn btn-danger">
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+                                    </button>
                                    </form>
                                 </a>
                             </div>
@@ -58,9 +62,20 @@
         </nav>
 
         {{-- page --}}
-        <div class="header p-3">
-            <div class="card p-2">
-                <h1>Dashboard</h1>
+        <div class="header p-3 mt-3">
+            <div class="card p-3">
+
+                {{-- error message --}}
+                @if($errors->any())
+                @foreach ($errors->all() as $e)
+                    <div class="alert alert-danger">
+                        {{ $e}}
+                    </div>
+                @endforeach
+                @endif
+                {{-- error message --}}
+
+                @yield('content')
             </div>
         </div>
         {{-- page --}}
